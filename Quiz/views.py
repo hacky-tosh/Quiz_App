@@ -19,7 +19,7 @@ class QuizListCreateView(generics.ListCreateAPIView):
     def create(self, request, *args, **kwargs):
         if not request.user.is_superuser:
             return Response({"error": "Only admin users can create quizzes."}, status=status.HTTP_403_FORBIDDEN)
-        
+    
         request.data["creator"] = self.request.user.id
         response = super().create(request, *args, **kwargs)
         quiz_id = response.data["id"]
@@ -123,6 +123,8 @@ class QuizAttemptView(generics.CreateAPIView):
 
 class QuizScoresView(generics.ListAPIView):
     serializer_class = ParticipantSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
     def get_queryset(self):
         quiz_id = self.kwargs.get('quiz_id')

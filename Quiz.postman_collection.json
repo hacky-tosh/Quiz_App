@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "fdc760a6-8f20-4277-a837-04961526fc9e",
+		"name": "Quiz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17144670"
+	},
+	"item": [
+		{
+			"name": "Add a question and attach it to quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quiz_id\":2,\r\n    \"text\": \"question2?\",\r\n    \"creator\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://167.71.220.189/api/questions/"
+			},
+			"response": []
+		},
+		{
+			"name": "Participate in quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"quiz\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://167.71.220.189/api/participants/"
+			},
+			"response": []
+		},
+		{
+			"name": "Add an answer to quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \"question\": 1,\r\n    \"text\":\"allahabad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://167.71.220.189/api/answers/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Quiz",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"url": "http://167.71.220.189/api/quizzes/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All participents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"url": "http://127.0.0.1:8000/api/participants/"
+			},
+			"response": []
+		},
+		{
+			"name": "Attempt the quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"user\": \"1\", \r\n  \"answers\": [\r\n    {\r\n      \"question\": 1,\r\n      \"selected_answer\": 1 \r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://167.71.220.189/api/quizzes/2/attempt/"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a quiz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 4f2d27e2d24e8f713fbac4f55f83e09fd5a34e4b",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"General Knowledge Quiz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://167.71.220.189/api/quizzes/"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,126 @@
+##API Endpoints
+#Create a Quiz: Allows an admin user to create a quiz.
+
+Endpoint: /api/quizzes/
+Method: POST
+Headers: Authorization: Token <token>
+Request Body:
+   ```bash
+    {
+      "title": "General Knowledge Quiz"
+    }
+
+
+
+#Retrieve a Quiz: Retrieves details of a specific quiz.
+
+Endpoint: /api/quizzes/<quiz_id>/
+Method: GET
+Headers: Authorization: Token <token>
+Example Response:
+         ```bash
+         {
+            "id": 1,
+            "title": "General Knowledge Quiz",
+            "creator": 1,
+            "url": "http://localhost:8000/api/quizzes/1/"
+        }
+
+
+#List Participants: Retrieves a list of participants for a specific quiz.
+
+Endpoint: /api/participants/
+Method: GET
+Headers: Authorization: Token <token>
+Example Response:
+    ```bash
+    [
+    {
+        "user": 1,
+        "quiz": 1,
+        "score": 85
+    },
+    {
+        "user": 2,
+        "quiz": 1,
+        "score": 92
+    }
+    ] 
+
+#Create a Question: Allows an admin user to add a question to a quiz.
+
+Endpoint: /api/questions/
+Method: POST
+Headers: Authorization: Token <token>
+Request Body:
+    ```bash
+        {
+            "quiz_id": 1,
+            "text": "What is the capital of France?",
+            "creator_id": 1
+        }
+#Create Answers: Allows an admin user to add answers to a question.
+
+Endpoint: /api/answers/
+Method: POST
+Headers: Authorization: Token <token>
+Request Body:
+    ```bash
+        {
+            "question_id": 1,
+            "answers": [
+                {
+                    "text": "Paris",
+                    "is_correct": true
+                },
+                {
+                    "text": "London",
+                    "is_correct": false
+                },
+                {
+                    "text": "Berlin",
+                    "is_correct": false
+                }
+            ]
+        }
+
+#Attempt a Quiz: Allows a user to attempt a quiz and submit answers.
+
+Endpoint: /api/quizzes/<quiz_id>/attempt/
+Method: POST
+Headers: Authorization: Token <token>
+Request Body:
+    ```bash
+        {
+            "user": 1,
+            "answers": [
+                {
+                    "question": 1,
+                    "selected_answer": 1
+                },
+                {
+                    "question": 2,
+                    "selected_answer": 3
+                }
+            ]
+        }
+
+#Get Quiz Scores: Retrieves the scores of participants for a specific quiz.
+
+Endpoint: /api/quizzes/<quiz_id>/scores/
+Method: GET
+Headers: Authorization: Token <token>
+Example Response:
+```bash
+    [
+        {
+            "participant": 1,
+            "user": 1,
+            "score": 75
+        },
+        {
+            "participant": 2,
+            "user": 2,
+            "score": 85
+        }
+    ]
